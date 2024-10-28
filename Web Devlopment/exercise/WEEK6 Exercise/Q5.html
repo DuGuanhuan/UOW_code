@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q5 - Slideshow</title>
+    <script>
+        let slideshowInterval = null;
+        const images = [
+            "https://via.placeholder.com/300/FF0000/FFFFFF?text=Image+1",
+            "https://via.placeholder.com/300/00FF00/FFFFFF?text=Image+2",
+            "https://via.placeholder.com/300/0000FF/FFFFFF?text=Image+3",
+            "https://via.placeholder.com/300/FFFF00/FFFFFF?text=Image+4"
+        ];
+
+        function startSlideshow() {
+            if (slideshowInterval === null) {
+                slideshowInterval = setInterval(() => {
+                    const randomIndex = Math.floor(Math.random() * images.length);
+                    document.getElementById("slideshow").src = images[randomIndex];
+                }, 1000);
+            }
+        }
+
+        function stopSlideshow() {
+            clearInterval(slideshowInterval);
+            slideshowInterval = null;
+        }
+    </script>
+</head>
+<body>
+
+    <h1>Slideshow</h1>
+    <button onclick="startSlideshow()">Start Slideshow</button>
+    <button onclick="stopSlideshow()">Stop Slideshow</button><br><br>
+    <img id="slideshow" src="https://via.placeholder.com/300/FF0000/FFFFFF?text=Image+1" alt="Slideshow Image" width="300">
+
+</body>
+</html>

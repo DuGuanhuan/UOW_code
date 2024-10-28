@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A2-Q1-GuanhuanDu-8455259</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .emoji {
+            font-size: 100px;
+            cursor: pointer;
+        }
+        .name {
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .equation {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        let step = 3;
+
+        function updateEquation() {
+            const studentNumber = 8455259;
+            const result = studentNumber - step;
+            document.getElementById("equation").textContent = `${studentNumber} - ${step} = ${result}`;
+            step += 3;
+        }
+
+        function resetEquation() {
+            const studentNumber = 8455259;
+            step = 3;
+            const result = studentNumber - step;
+            document.getElementById("equation").textContent = `${studentNumber} - ${step} = ${result}`;
+        }
+    </script>
+</head>
+<body>
+
+    <div class="name" onmouseover="resetEquation()">Guanhuan Du</div>
+    <div class="emoji" onmouseover="updateEquation()">😊</div>
+    <div class="equation" id="equation">8455259 - 3 = 8455256</div>
+
+</body>
+</html>

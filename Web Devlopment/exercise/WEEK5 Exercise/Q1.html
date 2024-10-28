@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Book Search</title>
+    <script>
+        function clearForm() {
+            document.getElementById("author").value = "";
+            document.getElementById("year").value = "";
+            // Clear all checkboxes
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach((checkbox) => {
+                checkbox.checked = false;
+            });
+        }
+    </script>
+</head>
+<body>
+
+    <h1>Library Book Search</h1>
+    <form action="http://library.whosville/bsearch" method="GET">
+        <div>
+            <label for="author" style="display: inline-block; width: 150px;">Author name:</label>
+            <input type="text" id="author" name="author" required>
+        </div>
+        <br>
+        <div>
+            <label for="year" style="display: inline-block; width: 150px;">Publication year:</label>
+            <input type="number" id="year" name="year" required>
+        </div>
+        <br>
+        <div>
+            <label style="display: inline-block;">Subject:</label><br>
+            <input type="checkbox" id="math" name="sub" value="mth">
+            <label for="math">Mathematics</label><br>
+            <input type="checkbox" id="cs" name="sub" value="cs">
+            <label for="cs">Computer Science</label><br>
+            <input type="checkbox" id="bio" name="sub" value="bio">
+            <label for="bio">Biology</label><br>
+            <input type="checkbox" id="phy" name="sub" value="phy">
+            <label for="phy">Physics</label><br>
+            <input type="checkbox" id="chem" name="sub" value="chem">
+            <label for="chem">Chemistry</label><br>
+        </div>
+        <br>
+        <button type="submit">Search</button>
+        <button type="button" onclick="clearForm()">Clear</button>
+    </form>
+
+</body>
+</html>
