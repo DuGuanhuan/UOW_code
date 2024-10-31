@@ -1,0 +1,205 @@
+{% extends 'base.html' %}
+
+{% block style %}
+    <link rel="stylesheet" href="../static/layui/css/layui.css"/>
+    {#    <script src="../static/js/jquery.min.js"></script>#}
+    <script src="../static/layui/layui.js"></script>
+    <style>
+        .add {
+            margin: 10px 30px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "微软雅黑";
+            background-color: #ddd;
+
+        }
+
+        .box {
+            width: 80%;
+            height: 500px;
+            background: #fff;
+            margin: 30px auto;
+            padding: 20px;
+            overflow-y: scroll;
+        }
+
+        .box .head span {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .box .head {
+            margin-bottom: 20px;
+        }
+
+        .box .head a {
+            text-decoration: none;
+            float: right;
+            font-size: 15px;
+            color: #333;
+        }
+
+        .box .head a:hover {
+            color: #F00;
+        }
+
+        .box ul li {
+            width: 23%;
+            height: 240px;
+            list-style: none;
+            position: relative;
+            float: left;
+            margin-left: 20px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .box ul li .deatil {
+            width: 100%;
+            height: 240px;
+            background: rgba(0, 0, 0, 0.7);
+            position: absolute;
+            top: -240px;
+            -webkit-transition: all 0.3s ease;
+            -o-transition: all 0.3s ease;
+            -moz-transition: all 0.3s ease;
+            -ms-transition: all 0.3s ease;
+        }
+
+        .box ul li .deatil h2 {
+            font-size: 18px;
+            color: #fff;
+            text-align: center;
+            padding-top: 30px;
+        }
+
+        .box ul li .deatil p {
+            font-size: 16px;
+            text-align: center;
+            margin: 30px;
+            color: #fff;
+        }
+
+        .box ul li .deatil a {
+            cursor: pointer;
+            font-size: 15px;
+            display: block;
+            color: #fff;
+            background-color: #F00;
+            text-decoration: none;
+            width: 160px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            margin: 10px auto;
+        }
+
+        .box ul li:hover .deatil {
+            top: 0;
+        }
+
+        .tttt li img {
+            width: 100%;
+            height: 240px;
+        }
+
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="scrollable wrapper">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-heading">
+                    <h1><small>车辆特征识别</small></h1>
+                </div>
+            </div>
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">新增车辆识别</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form id="uploadForm" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label for="inputfile">浏览图片</label>
+                                    <input type="file" class="form-control" id="image" accept="image/*" name="image">
+                                    <p class="help-block">*注意：请选择图片。</p>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" id="close">取消</button>
+                            <button type="button" class="btn btn-primary" id="submit">确定</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal -->
+            </div>
+            <div class="box">
+                <button class="btn btn-primary btn-lg add" data-toggle="modal" data-target="#myModal">新增车辆识别</button>
+                <!-- 图片内容 -->
+                <ul class="tttt">
+                    {% for i in image_list %}
+                        <li>
+                            <div class="deatil">
+                                <h2>图片名:{{ i.name }}</h2>
+                                <a class="see" image_id="{{ i.id }}">查看车辆识别结果</a>
+                            </div>
+                            <img src="../static/{{ i.path }}" alt="" />
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script>
+
+        $("#submit").on('click', function () {
+            var loading = layer.msg("正在识别车辆中，请稍后...", {icon: 16, shade: [0.3, "gray"], time: false});
+
+            $.ajax({
+                method: "POST",
+                url: "/predict",
+                processData: false,
+                contentType: false,
+                data: new FormData($('#uploadForm')[0]),
+                success: function (data) {
+                    layer.close(loading)
+                        layer.msg("车类型："+data.car_type  + "<br/>" + "车颜色："+data.color +"<br/>" + "车品牌：" + data.xh , {icon: 6})
+                    setTimeout(  window.location.reload(),2000)
+
+                }
+            })
+        })
+        layui.use(['layer'], function () {
+            let layer = layui.layer;
+            $(".see").on('click', function () {
+                console.log(22)
+                var image_id = $(this).attr('image_id')
+                console.log(image_id)
+                $.ajax({
+                    method: "get",
+                    url: "/get_result/" + image_id,
+                    success: function (data) {
+                        layer.msg("车类型："+data.car_type  + "<br/>" + "车颜色："+data.color +"<br/>" + "车品牌：" + data.xh , {icon: 6})
+                    },
+                    error: function (error) {
+                        layer.msg('解析失败，查看后台日志', {icon: 5})
+                    }
+                })
+            })
+        })
+    </script>
+{% endblock %}

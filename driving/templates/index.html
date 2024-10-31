@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% block style %}
+
+{% endblock %}
+ {% block name %}
+                    首页
+                    {% endblock %}
+{% block content %}
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="card">
+                        <div class="content">
+                            <div class="row">
+                                <div class="col-xs-5">
+                                    <div class="icon-big icon-warning text-center">
+                                        <i class="ti-server"></i>
+                                    </div>
+                                </div>
+                                <div class="col-xs-7">
+                                    <div class="numbers">
+                                        <p>总用户数</p>
+                                        {{ total_user }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="footer">
+                                <hr/>
+                                <div class="stats">
+                                    <i class="ti-reload"></i>最新统计
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="card">
+                        <div class="content">
+                            <div class="row">
+                                <div class="col-xs-5">
+                                    <div class="icon-big icon-success text-center">
+                                        <i class="ti-wallet"></i>
+                                    </div>
+                                </div>
+                                <div class="col-xs-7">
+                                    <div class="numbers">
+                                        <p>总图片数</p>
+                                        {{ total_info }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="footer">
+                                <hr/>
+                                <div class="stats">
+                                    <i class="ti-calendar"></i> 最新统计
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="card">
+                        <div class="content">
+                            <div class="row">
+                                <div class="col-xs-5">
+                                    <div class="icon-big icon-danger text-center">
+                                        <i class="ti-pulse"></i>
+                                    </div>
+                                </div>
+                                <div class="col-xs-7">
+                                    <div class="numbers">
+                                        <p>当前年份</p>
+                                        {{ year }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="footer">
+                                <hr/>
+                                <div class="stats">
+                                    <i class="ti-timer"></i> 最新统计
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="card">
+                        <div class="content">
+                            <div class="row">
+                                <div class="col-xs-5">
+                                    <div class="icon-big icon-info text-center">
+                                        <i class="ti-twitter-alt"></i>
+                                    </div>
+                                </div>
+                                <div class="col-xs-7">
+                                    <div class="numbers">
+                                        <p>当前月份</p>
+                                        {{ month }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="footer">
+                                <hr/>
+                                <div class="stats">
+                                    <i class="ti-reload"></i> 最新统计
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="header">
+                            <h4 class="title">用户行为</h4>
+                            <p class="category">24小时个人表现</p>
+                        </div>
+                        <div class="content">
+                            <div id="chartHours" class="ct-chart"></div>
+                            <div class="footer">
+                                <div class="chart-legend">
+                                    <i class="fa fa-circle text-info"></i> 打开
+                                    <i class="fa fa-circle text-danger"></i> 单击
+                                    <i class="fa fa-circle text-warning"></i> 双击
+                                </div>
+                                <hr>
+                                <div class="stats">
+                                    <i class="ti-reload"></i> 最新统计
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}

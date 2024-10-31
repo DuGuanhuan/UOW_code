@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+
+{% block style %}
+            <link rel="stylesheet" href="../static/css/style.css"/>
+
+        <link rel="stylesheet" href="../static/layui/css/layui.css"/>
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/layui/layui.js"></script>
+<style>
+.col-lg-4{
+    height:450px;
+    margin: 10px 0;
+}
+</style>
+        <style>
+
+
+
+        .subbtn {
+            width: 72px;
+            height: 28px;
+            line-height: 28px;
+            font-size: 14px;
+            border-radius: 2px;
+            background-color: #46B2EF;
+            color: #FFFFFF;
+            border: 1px solid #3686B3;
+            cursor: pointer;
+            margin-left: 20px;
+            margin-bottom: 50px;
+        }
+
+        .subbtn:hover {
+            background-color: #1a88cf;
+        }
+
+        a {
+            color: #70CCFF;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .title1{
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+    </style>
+{% endblock %}
+
+
+{% block content %}
+  <section id="innerBanner">
+    <div class="inner-content">
+      <h2><span>汽车百科</span><br>在这里你将看到世界热门品牌车辆的百科知识!</h2>
+      <div>
+      </div>
+    </div>
+  </section>
+
+  <main id="main">
+    <section id="services">
+      <div class="container">
+       <div class="mainframe">
+              <div class="title">汽车百科</div>
+       <div class="layui-form-item">
+                <label class="layui-form-label">主题:</label>
+                <div class="layui-input-block">
+                    <input id="title" type="text" lay-verify="title" name="title" placeholder="请输入主题"
+                           autocomplete="off"
+                           class="layui-input"
+                           lay-verify="required">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">描述:</label>
+                <div class="layui-input-block">
+                    <textarea id="text"  lay-verify="text" name="text"
+                           autocomplete="off"
+                              class="layui-input"></textarea>
+                </div>
+            </div>
+        <input type="button" name="submit" value="发表" class="subbtn">
+       </div>
+        <div class="row">
+            {% for i in results %}
+          <div class="col-lg-12">
+            <div class="box wow fadeInLeft">
+              <h4 class="title1">{{ i.title }}</h4>
+              <p class="description">{{ i.desc }}</p>
+                </br>
+            </div>
+          </div>
+                </br>
+
+            {% endfor %}
+        </div>
+
+      </div>
+    </section><!-- #services -->
+
+
+  </main>
+
+{% endblock %}
+
+{% block script %}
+<script>
+        $(".subbtn").click(function () {
+            var title = $("#title").val();
+            var text = $("#text").val();
+            if (text == "" || title=='') {
+                alert("您还没有输入任何内容！");
+            } else {
+                $.ajax({
+            type: 'POST',
+            url: "/add_message",
+            dataType: 'json', //服务端返回json格式的数据
+            data: {'text': text,'title':title},
+            success: function (data) { // 这里的data就是返回的json格式的数据
+                window.location.reload()
+            },
+            error: function (xhr, type) {
+                if (xhr.status == 401) {
+                    alert('账户或者密码或角色选择不正确')
+                }
+            }
+        });
+            }
+        })
+
+</script>
+{% endblock %}

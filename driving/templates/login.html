@@ -1,0 +1,257 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+
+    <link rel="stylesheet" href="../static/css/login.css">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #19778c, #095f88);
+            background-size: 1400% 300%;
+            animation: dynamics 6s ease infinite;
+            -webkit-animation: dynamics 6s ease infinite;
+            -moz-animation: dynamics 6s ease infinite;
+            font-size: 14px;
+            color: #ffffff;
+            min-height: 700px;
+        }
+
+        /*登录样式*/
+        .main {
+            position: fixed;
+            text-align: center;
+            top: 182px;
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .login {
+            width: 470px;
+            height: 470px;
+            background: linear-gradient(to bottom, #19778c, #095f88);
+            animation: dynamics 6s ease infinite;
+            -webkit-animation: dynamics 6s ease infinite;
+            -moz-animation: dynamics 6s ease infinite;
+            opacity: 0.9;
+            border: solid 1px #13a1fc;
+            background-size: 1400% 300%;
+        }
+
+        @keyframes dynamics {
+            0% {
+                background-position: 0% 0%;
+            }
+            50% {
+                background-position: 50% 100%;
+            }
+            100% {
+                background-position: 100% 0%;
+            }
+        }
+
+        .log-con {
+            background: linear-gradient(#13a1fc, #13a1fc) left top, linear-gradient(#13a1fc, #13a1fc) left top,
+            linear-gradient(#13a1fc, #13a1fc) right top, linear-gradient(#13a1fc, #13a1fc) right top,
+            linear-gradient(#13a1fc, #13a1fc) left bottom, linear-gradient(#13a1fc, #13a1fc) left bottom,
+            linear-gradient(#13a1fc, #13a1fc) right bottom, linear-gradient(#13a1fc, #13a1fc) right bottom;
+            background-repeat: no-repeat;
+            background-size: 3px 20px, 20px 3px;
+            height: 100%;
+            margin: -2px;
+            padding: 3px 1px 1px 0;
+            border-radius: 3px;
+        }
+
+        .log-con > span {
+            font-size: 30px;
+            font-weight: bold;
+            line-height: 24px;
+            letter-spacing: 2px;
+            display: block;
+            margin: 20px 0 44px 0;
+        }
+
+        .log-con > span::after {
+            display: block;
+            content: '';
+            width: 57px;
+            height: 3px;
+            background: #ffffff;
+            margin-top: 16px;
+            justify-content: center;
+            position: relative;
+            left: 206px;
+        }
+
+        .log-con > input {
+            display: block;
+            margin: 10px 0 32px 70px;
+            width: 330px;
+            height: 42px;
+            background-color: #ffffff;
+            border-radius: 4px;
+            opacity: 0.9;
+            border: 0;
+            font-size: 16px;
+            outline: none;
+            padding-left: 10px;
+            color: #000000;
+        }
+
+        .log-con > a {
+            width: 340px;
+            height: 44px;
+            background-color: #0090ff;
+            border-radius: 4px;
+            display: block;
+            margin: 10px 0 0 70px;
+            text-align: center;
+            line-height: 44px;
+            cursor: pointer;
+            opacity: 1;
+        }
+
+        input::-webkit-input-placeholder {
+            color: #000000;
+            font-size: 16px;
+        }
+
+        .log-con > .code {
+            width: 216px;
+            display: inline-block;
+            margin-left: 6px;
+        }
+
+        .log-con > #code {
+            width: 94px;
+            display: inline-block;
+            margin-left: 14px;
+            cursor: pointer;
+        }
+
+        /*logo*/
+        .logo {
+            width: 168px;
+            height: 75px;
+            position: fixed;
+            left: 150px;
+            top: 26px;
+        }
+
+        .logo > img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        /*版权样式*/
+        .copyright {
+            position: fixed;
+            bottom: 10px;
+            font-size: 16px;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+    <link rel="stylesheet" href="../static/layui/css/layui.css"/>
+    <script type="text/javascript" src="../static/js/snowflakes.min.1.0.0.js"></script>
+    <script type="text/javascript" src="../static/js/script.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/layui/layui.js"></script>
+</head>
+<body>
+<div class="main">
+    <div class="login">
+        <div class="log-con">
+            <span>登录</span>
+            <input type="text" class="name" id="username" placeholder="请输入用户名">
+            <input type="password" class="password" id="password" placeholder="请输入密码">
+            <input type="text" class="code" id="codes" placeholder="请输入验证码">
+            <input type="button" id="code" onClick="change();">
+            <a id="login">立即登录</a>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    change();
+
+    //验证码
+    function change() {
+        code = $("#code");
+        // 验证码组成库
+        var arrays = new Array(
+            '1', '2', '3', '4', '5', '6', '7', '8', '9', '0',
+            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
+            'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
+            'u', 'v', 'w', 'x', 'y', 'z',
+            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
+            'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
+            'U', 'V', 'W', 'X', 'Y', 'Z'
+        );
+        codes = '';// 重新初始化验证码
+        for (var i = 0; i < 4; i++) {
+            // 随机获取一个数组的下标
+            var r = parseInt(Math.random() * arrays.length);
+            codes += arrays[r];
+        }
+        console.log(codes)
+        // 验证码添加到input里
+        code.val(codes);
+    }
+
+    layui.use(['layer', 'form'], function () {
+        var layer = layui.layer
+        $(function () {
+            $("#login").click(function () {
+                var userName = $("#username").val();
+                var password = $("#password").val();
+                var r_codes = $("#codes").val().toLocaleLowerCase();
+
+                if ("" == userName || undefined == userName) {
+                    layer.msg("用户名不能为空");
+                    return
+                }
+                if ("" == password || undefined == password) {
+                    layer.msg("密码不能为空");
+                    return
+                }
+                if ("" == r_codes || undefined == r_codes) {
+                    layer.msg("密码不能为空");
+                    return
+                }
+                if (r_codes != codes.toLocaleLowerCase()) {
+                    layer.msg('验证码不正确')
+                    return;
+                }
+                window.localStorage.setItem('userName', userName);
+                window.localStorage.setItem('password', password);
+                console.log(userName, password)
+                $.ajax({
+                    type: 'POST',
+                    url: "/user/login_check",
+                    dataType: 'json', //服务端返回json格式的数据
+                    data: {'username': userName, 'password': password},
+                    success: function (data) { // 这里的data就是返回的json格式的数据
+                        window.location.href = "/index"
+                    },
+                    error: function (xhr, type) {
+                        if (xhr.status == 401) {
+                            layer.msg('用户名或者密码不正确')
+                        }
+                    }
+                });
+
+            })
+        })
+    })
+</script>
+</body>
+</html>
+

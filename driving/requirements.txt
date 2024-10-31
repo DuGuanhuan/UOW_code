@@ -1,0 +1,9 @@
+pymysql
+Django
+hyperlpr==0.0.2
+opencv-python
+numpy
+pillow
+matplotlib
+
+
