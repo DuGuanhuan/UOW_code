@@ -1,0 +1,21 @@
+环境： Python3.7
+
+
+安装命令：
+pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple --user
+pip install -f https://download.pytorch.org/whl/torch_stable.html torch==1.7.0+cpu torchvision==0.8.1+cpu torchaudio===0.7.0
+
+运行命令：
+python manage.py runserver 8000
+
+打开浏览器查看
+http://127.0.0.1:8000
+
+用户名：admin 密码：123
+后台账号 admins  密码 admins
+
+
+
+
+
+

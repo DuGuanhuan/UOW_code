@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block style %}
+  <link href="../static/css/style.css" rel="stylesheet">
+<style>
+.col-lg-4{
+    height:450px;
+    margin: 10px 0;
+}
+</style>
+{% endblock %}
+
+
+{% block content %}
+  <section id="innerBanner">
+    <div class="inner-content">
+      <h2><span>识车大全</span><br>在这里你将看到世界热门品牌车型和相应介绍!</h2>
+      <div>
+      </div>
+    </div>
+  </section>
+
+  <main id="main">
+    <section id="services">
+      <div class="container">
+        <div class="row">
+            {% for i in results %}
+          <div class="col-lg-4">
+            <div class="box wow fadeInLeft">
+              <div class="icon"><img src="..{{ i.path }}"/></div>
+              <h4 class="title">{{ i.name }}</h4>
+                <h4 class="title">所属国家：{{ i.county }}</h4>
+              <p class="description">{{ i.desc }}</p>
+            </div>
+          </div>
+            {% endfor %}
+        </div>
+
+      </div>
+    </section><!-- #services -->
+
+
+  </main>
+
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}

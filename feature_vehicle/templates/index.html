@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block style  %}
+{% endblock %}
+{% block content  %}
+    <div class="graphs">
+					<div class="col_3">
+						<div class="col-md-3 widget widget1">
+							<div class="r3_counter_box">
+								<i class="fa fa-mail-forward"></i>
+								<div class="stats">
+								  <h5>{{ total_car }} <span>个</span></h5>
+								  <div class="grow">
+									<p>车标数量</p>
+								  </div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 widget widget1">
+							<div class="r3_counter_box">
+								<i class="fa fa-users"></i>
+								<div class="stats">
+								  <h5>{{ total_user }}<span>个</span></h5>
+								  <div class="grow grow1">
+									<p>用户数量</p>
+								  </div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 widget widget1">
+							<div class="r3_counter_box">
+								<i class="fa fa-eye"></i>
+								<div class="stats">
+								  <h5>{{ total_pic }} <span>个</span></h5>
+								  <div class="grow grow3">
+									<p>图片数量</p>
+								  </div>
+								</div>
+							</div>
+						 </div>
+						 <div class="col-md-3 widget">
+							<div class="r3_counter_box">
+								<i class="fa fa-usd"></i>
+								<div class="stats">
+								  <h5>{{ year }}<span>年</span></h5>
+								  <div class="grow grow2">
+									<p>当前年份</p>
+								  </div>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+{% endblock %}
+{% block script  %}
+{% endblock %}

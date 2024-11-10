@@ -1,0 +1,16 @@
+
+环境： Python 3.8 
+
+安装命令：
+pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple 
+pip install dlib-19.19.0-cp38-cp38-win_amd64.whl
+
+
+运行命令：python manage.py runserver 8000
+
+打开浏览器查看http://127.0.0.1:8000
+
+测试账户
+
+用户名：admin 
+密码：123
