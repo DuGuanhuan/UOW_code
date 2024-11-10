@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q1 - Display Subjects</title>
+    <script>
+        function showSubjects() {
+            const subject1 = document.getElementById("subject1").value;
+            const subject2 = document.getElementById("subject2").value;
+            const subject3 = document.getElementById("subject3").value;
+            const subject4 = document.getElementById("subject4").value;
+            document.getElementById("result").textContent = `You selected: ${subject1}, ${subject2}, ${subject3}, ${subject4}`;
+        }
+    </script>
+</head>
+<body>
+
+    <h1>Enter Your Subjects</h1>
+    <input type="text" id="subject1" placeholder="Subject 1"><br><br>
+    <input type="text" id="subject2" placeholder="Subject 2"><br><br>
+    <input type="text" id="subject3" placeholder="Subject 3"><br><br>
+    <input type="text" id="subject4" placeholder="Subject 4"><br><br>
+    <button onclick="showSubjects()">Show Selection</button>
+    <p id="result"></p>
+
+</body>
+</html>

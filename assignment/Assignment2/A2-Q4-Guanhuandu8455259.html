@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A2-Q4-GuanhuanDu-8455259</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .pattern {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+        .number {
+            font-size: 24px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+    </style>
+    <script>
+        let clickCount = 0;
+        const emojis = ["😊", "🐸", "⭐"]; // Happy face, frog, star
+
+        function addEmojiPattern() {
+            clickCount++;
+            let pattern = "";
+            
+            // 根据点击次数添加emoji
+            for (let i = 0; i < clickCount; i++) {
+                pattern += emojis[i % 3] + " "; // 按顺序添加emoji
+            }
+
+            // 设置颜色
+            let color;
+            if (clickCount % 3 === 1) {
+                color = "orange";
+            } else if (clickCount % 3 === 2) {
+                color = "green";
+            } else {
+                color = "purple";
+            }
+
+            // 显示结果
+            document.getElementById("emojiPattern").innerHTML = pattern + `<span class="number" style="color: ${color};">${clickCount}</span>`;
+        }
+    </script>
+</head>
+<body>
+
+    <h1>A2-Q4 - Add Emoji Pattern</h1>
+    <button onclick="addEmojiPattern()">Add emoji pattern</button>
+
+    <div id="emojiPattern" class="pattern"></div>
+
+</body>
+</html>

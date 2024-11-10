@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Subject>
+    <SubjectCode>CSIT884</SubjectCode>
+    <SubjectTitle>Web Development</SubjectTitle>
+    <SubjectCoordinators>
+        <Coordinator>
+            <Name>Jinhua Zhao</Name>
+            <Email>jzhao1101@ccnu.edu.cn</Email>
+            <Email>jinhua@uow.edu.au</Email>
+            <Office>N8013</Office>
+        </Coordinator>
+    </SubjectCoordinators>
+    <WeeklyTopics>
+        <Topic>HTML</Topic>
+        <Topic>CSS</Topic>
+        <Topic>JavaScript</Topic>
+        <Topic>XML and DTD</Topic>
+        <Topic>XSD</Topic>
+        <Topic>XSLT</Topic>
+        <Topic>JSON</Topic>
+        <Topic>DOM</Topic>
+        <Topic>AJAX</Topic>
+        <Topic>Canvas</Topic>
+        <Topic>Form Validation</Topic>
+        <Topic>Local Storage</Topic>
+    </WeeklyTopics>
+</Subject>

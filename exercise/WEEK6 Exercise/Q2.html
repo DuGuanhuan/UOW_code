@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Operation Check</title>
+    <script>
+        function checkAnswer() {
+            const num1 = parseFloat(document.getElementById("num1").value);
+            const num2 = parseFloat(document.getElementById("num2").value);
+            const operation = document.getElementById("operation").value;
+            const userAnswer = parseFloat(document.getElementById("answer").value);
+            let correctAnswer;
+
+            if (operation === "+") {
+                correctAnswer = num1 + num2;
+            } else if (operation === "-") {
+                correctAnswer = num1 - num2;
+            } else if (operation === "x") {
+                correctAnswer = num1 * num2;
+            }
+
+            const result = (userAnswer === correctAnswer) ? "Correct!" : "Incorrect, please try again.";
+            document.getElementById("result").textContent = result;
+        }
+    </script>
+</head>
+<body>
+
+    <h1>Math Operation Check</h1>
+    <input type="number" id="num1" placeholder="Number 1">
+    <select id="operation">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="x">x</option>
+    </select>
+    <input type="number" id="num2" placeholder="Number 2">
+    <span>=</span>
+    <input type="number" id="answer" placeholder="Your Answer">
+    <button onclick="checkAnswer()">Check</button>
+    <p id="result"></p>
+
+</body>
+</html>

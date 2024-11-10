@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<studentRecord>
+    <student>
+        <firstName>John</firstName>
+        <lastName>Smith</lastName>
+        <studentID>1231234</studentID>
+    </student>
+    <subjects>
+        <subject>
+            <subjectCode>MATH101</subjectCode>
+            <creditPoint>4</creditPoint>
+            <mark>85</mark>
+            <grade>A</grade>
+        </subject>
+        <subject>
+            <subjectCode>ECON111</subjectCode>
+            <creditPoint>5</creditPoint>
+            <mark>70</mark>
+            <grade>B</grade>
+        </subject>
+        <subject>
+            <subjectCode>CS100</subjectCode>
+            <creditPoint>5</creditPoint>
+            <mark>80</mark>
+            <grade>A</grade>
+        </subject>
+        <subject>
+            <subjectCode>LAW121</subjectCode>
+            <creditPoint>6</creditPoint>
+            <mark>75</mark>
+            <grade>B</grade>
+        </subject>
+    </subjects>
+</studentRecord>

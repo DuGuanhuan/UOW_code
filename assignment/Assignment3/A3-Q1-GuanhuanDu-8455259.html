@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Animation Assignment</title>
+    <style>
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .equation {
+            font-size: 24px;
+            margin: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button onclick="startAnimation()">Start Animation</button>
+        <button onclick="stopAnimation()">Stop Animation</button>
+        <div id="display" class="equation"></div>
+    </div>
+
+    <script>
+        const studentNumber = "8455259"; // 学号
+        const email = "gd978@uowmail.edu.au"; // UOW邮箱
+        let animationInterval;
+        let counter = 1; // 从1开始
+        let colors = ['red', 'orange'];
+        let colorIndex = 0;
+
+        function startAnimation() {
+            // 清除之前的动画（如果存在）
+            stopAnimation();
+            
+            // 立即显示第一个等式
+            displayEquation();
+            
+            // 设置定时器，每秒更新一次
+            animationInterval = setInterval(displayEquation, 1000);
+        }
+
+        function displayEquation() {
+            const display = document.getElementById('display');
+            let equation;
+
+            // 使用一个变量来控制显示顺序
+            if (Math.floor(counter / 2) % 2 === 0) {
+                // 学号 + 数字 = 结果
+                const result = parseInt(studentNumber) + counter;
+                equation = `${studentNumber} + ${counter} = ${result}`;
+            } else {
+                // 数字 + 学号 = 结果
+                const result = parseInt(studentNumber) + counter;
+                equation = `${counter} + ${studentNumber} = ${result}`;
+            }
+            
+            // 显示等式
+            display.innerHTML = equation;
+            // 设置颜色
+            display.style.color = colors[colorIndex];
+            colorIndex = (colorIndex + 1) % 2; // 交替颜色
+            counter += 2; // 每次增加2
+        }
+
+        function stopAnimation() {
+            // 清除定时器
+            clearInterval(animationInterval);
+            
+            // 显示邮箱地址
+            const display = document.getElementById('display');
+            display.innerHTML = email;
+            display.style.color = 'black';
+            
+            // 重置计数器和颜色索引
+            counter = 1;
+            colorIndex = 0;
+        }
+    </script>
+</body>
+</html> 

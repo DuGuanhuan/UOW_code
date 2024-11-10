@@ -1,0 +1,33 @@
+#competitionPara {
+    font-size: 36px;
+}
+.orange-text {
+    color: orange;
+}
+.blue-text {
+    color: blue;
+}
+.purple-text {
+    color: purple;
+}
+.emoji {
+    font-size: 1.5em;
+}
+table {
+    border-collapse: collapse;
+}
+th, td {
+    padding: 10px;
+}
+.rank-column {
+    text-align: right;
+    vertical-align: top;
+}
+.team-column {
+    text-align: center;
+    vertical-align: top;
+}
+.member-column {
+    text-align: left;
+    vertical-align: top;
+}

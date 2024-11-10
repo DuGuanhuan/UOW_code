@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Information</title>
+    <style>
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        #output {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="text" id="studentName" placeholder="Enter student name" value="Guanhuan Du"><br>
+        <input type="email" id="studentEmail" placeholder="Enter student email"><br>
+        <input type="text" id="studentNumber" placeholder="Enter student number" value="8455259"><br>
+        <input type="text" id="backgroundColor" placeholder="Enter background color"><br>
+        <input type="text" id="fontSize" placeholder="Enter font size"><br>
+        <input type="text" id="textColor" placeholder="Enter text color"><br>
+        <button onclick="displayStudentInfo()">Display student information</button>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        function displayStudentInfo() {
+            const name = document.getElementById('studentName').value;
+            const email = document.getElementById('studentEmail').value;
+            const number = document.getElementById('studentNumber').value;
+            const bgColor = document.getElementById('backgroundColor').value;
+            const fontSize = document.getElementById('fontSize').value;
+            const textColor = document.getElementById('textColor').value;
+
+            const outputDiv = document.getElementById('output');
+            outputDiv.style.backgroundColor = bgColor;
+            outputDiv.style.fontSize = fontSize + 'px';
+            outputDiv.style.color = textColor;
+
+            outputDiv.innerHTML = `${number} ${name}, ${email}`;
+        }
+    </script>
+</body>
+</html> 
