@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="question4.xsl"?>
+<audit campus="Woolloomooloo" year="2000" session="A">
+    <subject sid="0769642">
+        <code>MATH101</code>
+        <title>Calculus</title>
+        <statistics>
+            <enrol>170</enrol>
+            <withdrawn>31</withdrawn>
+        </statistics>
+    </subject>
+    <subject sid="1734231">
+        <code>MATH234</code>
+        <title>Abstract Algebra</title>
+        <statistics>
+            <enrol>40</enrol>
+            <withdrawn>15</withdrawn>
+        </statistics>
+    </subject>
+    <subject sid="3423171">
+        <code>MATH222</code>
+        <title>Analysis</title>
+        <statistics>
+            <enrol>50</enrol>
+            <withdrawn>10</withdrawn>
+        </statistics>
+    </subject>
+    <subject sid="2317134">
+        <code>MATH241</code>
+        <title>Algebraic Number Theory</title>
+        <statistics>
+            <enrol>30</enrol>
+            <withdrawn>2</withdrawn>
+        </statistics>
+    </subject>
+    <subject sid="2133174">
+        <code>MATH287</code>
+        <title>Complex Analysis</title>
+        <statistics>
+            <enrol>60</enrol>
+            <withdrawn>20</withdrawn>
+        </statistics>
+    </subject>
+</audit>
