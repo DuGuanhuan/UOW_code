@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="students">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="student" maxOccurs="unbounded">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="name" type="xsd:string"/>
+                            <xsd:element name="band" type="bandType"/>
+                            <xsd:element name="score" type="scoreType"/>
+                        </xsd:sequence>
+                        <xsd:attribute name="id" type="xsd:string" use="required"/>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <!-- 定义band的限制类型 -->
+    <xsd:simpleType name="bandType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="A"/>
+            <xsd:enumeration value="B"/>
+            <xsd:enumeration value="C"/>
+            <xsd:enumeration value="D"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!-- 定义score的限制类型 -->
+    <xsd:simpleType name="scoreType">
+        <xsd:restriction base="xsd:integer">
+            <xsd:minInclusive value="0"/>
+            <xsd:maxInclusive value="300"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eBay Search</title>
+</head>
+<body>
+
+    <h1 style="font-weight: bold;">Ebay search</h1>
+    <form action="https://www.ebay.com/sch/i.html" method="GET">
+        <div>
+            <label for="keyword">Keyword:</label>
+            <input type="text" id="keyword" name="_nkw" required>
+        </div>
+        <br>
+        <div>
+            <span>Category:</span><br>
+            <input type="radio" id="art" name="_sacat" value="550">
+            <label for="art">Art</label><br>
+            <input type="radio" id="books" name="_sacat" value="267">
+            <label for="books">Book and Magazine</label><br>
+            <input type="radio" id="coins" name="_sacat" value="11116">
+            <label for="coins">Coins</label><br>
+            <input type="radio" id="music" name="_sacat" value="11233">
+            <label for="music">Music</label><br>
+            <input type="radio" id="stamps" name="_sacat" value="260">
+            <label for="stamps">Stamps</label><br>
+            <input type="radio" id="all" name="_sacat" value="0">
+            <label for="all">All categories</label><br>
+        </div>
+        <br>
+        <button type="submit">Search</button>
+    </form>
+
+</body>
+</html>

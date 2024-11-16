@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A3-Q3-GuanhuanDu-8455259</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .clickable {
+            cursor: pointer;
+            margin: 20px;
+        }
+        .blue {
+            color: blue;
+        }
+        .orange {
+            color: orange;
+        }
+        input[type="text"] {
+            width: 300px;
+            font-size: 16px;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        let number = 8455259;
+
+        function showEmail() {
+            const email = "gd978@uow.edu.au";
+            document.getElementById("textField").value = `${email} and ${number}`;
+            number++;
+        }
+
+        function showFullName() {
+            const fullName = "Guanhuan Du";
+            document.getElementById("textField").value = `${fullName} and ${number}`;
+            number++;
+        }
+    </script>
+</head>
+<body>
+
+    <h1>A3-Q3 - Display Information</h1>
+
+    <input type="text" id="textField" readonly>
+
+    <div class="clickable blue" onclick="showEmail()">Show UOW email and number</div>
+    <div class="clickable orange" onclick="showFullName()">Show full name and number</div>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q4 - Counter Animation</title>
+    <script>
+        let counter = 0;
+        let intervalId = null;
+
+        function startAnimation() {
+            if (intervalId === null) {
+                intervalId = setInterval(() => {
+                    counter++;
+                    document.getElementById("counter").textContent = `Counter: ${counter}`;
+                }, 1000);
+            }
+        }
+
+        function stopAnimation() {
+            clearInterval(intervalId);
+            intervalId = null;
+        }
+    </script>
+</head>
+<body>
+
+    <h1>Counter Animation</h1>
+    <button onclick="startAnimation()">Start Counter Animation</button>
+    <button onclick="stopAnimation()">Stop Counter Animation</button>
+    <p id="counter">Counter: 0</p>
+
+</body>
+</html>
