@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Report</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Login Report</h1>
+    <button id="getReport">Get Login Report</button>
+    <div id="report"></div>
+
+    <script>
+        $(document).ready(function() {
+            $('#getReport').click(function() {
+                $.ajax({
+                    url: 'A4-Q2-GuanhuanDu-8455259.json',
+                    dataType: 'json',
+                    success: function(data) {
+                        let report = '<ul>';
+                        data.users.forEach(function(user) {
+                            report += `<li>${user.name} (${user.email}): ${user.loginCount} logins</li>`;
+                        });
+                        report += '</ul>';
+                        $('#report').html(report);
+                    },
+                    error: function() {
+                        $('#report').html('Error loading report.');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
