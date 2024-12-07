@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joint Institute</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="heading">"Joint Institute"</h1>
+    <div class="button-container">
+        <button onclick="changeColor('green')">Green</button>
+        <button onclick="changeColor('orange')">Orange</button>
+        <button onclick="changeColor('blue')">Blue</button>
+    </div>
+
+    <script>
+        function changeColor(color) {
+            document.getElementById('heading').style.color = color;
+        }
+    </script>
+</body>
+</html>

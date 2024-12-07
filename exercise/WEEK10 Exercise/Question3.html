@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subject Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Subject Information</h1>
+    <label for="code">Subject code:</label>
+    <input type="text" id="code" value="MATH101"><br><br>
+
+    <label for="title">Subject title:</label>
+    <input type="text" id="title" value="Abstract Algebra"><br><br>
+
+    <label for="credit">Subject credit point:</label>
+    <input type="number" id="credit" value="4"><br><br>
+
+    <label for="core">Core subject:</label>
+    <input type="checkbox" id="core"><br><br>
+
+    <button onclick="viewJSON()">View JSON</button>
+
+    <textarea id="jsonOutput" readonly></textarea>
+
+    <script>
+        function viewJSON() {
+            const code = document.getElementById('code').value;
+            const title = document.getElementById('title').value;
+            const cp = document.getElementById('credit').value;
+            const coreFlag = document.getElementById('core').checked;
+
+            const subjectObject = {
+                code: code,
+                title: title,
+                cp: parseInt(cp),
+                coreFlag: coreFlag
+            };
+
+            document.getElementById('jsonOutput').value = JSON.stringify(subjectObject, null, 4);
+        }
+    </script>
+</body>
+</html>
