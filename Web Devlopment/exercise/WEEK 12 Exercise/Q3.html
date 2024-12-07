@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drag and Drop</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    #drop-area {
+      margin: 20px auto;
+      width: 300px;
+      height: 400px;
+      border: 2px dashed #aaa;
+      position: relative;
+    }
+    .animal {
+      width: 50px;
+      height: 50px;
+      cursor: grab;
+    }
+    .label {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+    .zone {
+      width: 100%;
+      height: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    #dog-zone {
+      border-bottom: 1px solid #ccc;
+    }
+    #cat-zone {
+      border-top: 1px solid #ccc;
+    }
+    #dog-images, #cat-images {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Drag an animal and drop it on the corresponding text.</h1>
+  <div id="drop-area">
+    <div id="dog-zone" class="zone">
+      <div class="label">DOG</div>
+      <div id="dog-images"></div>
+    </div>
+    <div id="cat-zone" class="zone">
+      <div class="label">CAT</div>
+      <div id="cat-images"></div>
+    </div>
+  </div>
+  <div>
+    <img src="dog.png" alt="Dog" id="dog" class="animal" draggable="true">
+    <img src="cat.png" alt="Cat" id="cat" class="animal" draggable="true">
+  </div>
+
+  <script>
+    const dog = document.getElementById('dog');
+    const cat = document.getElementById('cat');
+    const dogZone = document.getElementById('dog-zone');
+    const catZone = document.getElementById('cat-zone');
+    const dogImages = document.getElementById('dog-images');
+    const catImages = document.getElementById('cat-images');
+
+    // Drag start events
+    dog.addEventListener('dragstart', (e) => {
+      e.dataTransfer.setData('text', 'dog');
+    });
+
+    cat.addEventListener('dragstart', (e) => {
+      e.dataTransfer.setData('text', 'cat');
+    });
+
+    // Drag over and drop events for zones
+    [dogZone, catZone].forEach((zone) => {
+      zone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+      });
+
+      zone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        const animalType = e.dataTransfer.getData('text');
+        if (
+          (animalType === 'dog' && zone.id === 'dog-zone') ||
+          (animalType === 'cat' && zone.id === 'cat-zone')
+        ) {
+          const img = document.createElement('img');
+          img.src = `${animalType}.png`;
+          img.alt = animalType.charAt(0).toUpperCase() + animalType.slice(1);
+          img.className = 'animal';
+          if (animalType === 'dog') {
+            dogImages.appendChild(img);
+          } else {
+            catImages.appendChild(img);
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="A4-Q1withStyle-GuanhuanDu-8455259.xsl"?>
+<loginReport date="2024/09/20">
+    <device name="JI"/>
+    <user>
+        <username>aw321</username>
+        <name>Anna Wright</name>
+        <group>Student</group>
+        <login>
+            <entry date="2024/08/30" time="04:50:50" status="success"/>
+            <entry date="2024/09/01" time="01:30:56" status="fail"/>
+            <entry date="2024/09/01" time="02:00:10" status="success"/>
+        </login>
+    </user>
+    <user>
+        <username>gdu</username>
+        <name>Guanhuan Du</name>
+        <group>Student</group>
+        <login>
+            <entry date="2024/08/30" time="10:00:00" status="success"/>
+            <entry date="2024/09/01" time="11:00:00" status="fail"/>
+            <entry date="2024/09/02" time="09:00:00" status="success"/>
+        </login>
+    </user>
+    <user>
+        <username>jasonm</username>
+        <name>Jason Mill</name>
+        <group>Staff</group>
+        <login>
+            <entry date="2024/08/28" time="14:05:23" status="success"/>
+            <entry date="2024/09/10" time="09:25:33" status="fail"/>
+        </login>
+    </user>
+</loginReport>

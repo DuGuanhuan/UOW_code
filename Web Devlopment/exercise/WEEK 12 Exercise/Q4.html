@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library Book Search</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    form {
+      width: 400px;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 2px 2px 12px #aaa;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    input[type="text"], input[type="number"] {
+      width: calc(100% - 20px);
+      padding: 8px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .subjects {
+      margin-bottom: 12px;
+    }
+    .subjects label {
+      font-weight: normal;
+    }
+    .math-problem {
+      margin-top: 12px;
+      margin-bottom: 12px;
+      color: #555;
+    }
+    .error {
+      color: red;
+      font-weight: bold;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      background: #007BFF;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Whosville Library Book Search</h1>
+  <form id="book-search-form" action="http://library.whosville/bsearch" method="GET" onsubmit="return validateMath()">
+    <label for="author">Author name:</label>
+    <input type="text" id="author" name="author" required>
+
+    <label for="year">Publication year:</label>
+    <input type="number" id="year" name="year" required>
+
+    <div class="subjects">
+      <label>Subject:</label>
+      <label><input type="checkbox" name="sub" value="mth"> Mathematics</label>
+      <label><input type="checkbox" name="sub" value="cs"> Computer Science</label>
+      <label><input type="checkbox" name="sub" value="bio"> Biology</label>
+      <label><input type="checkbox" name="sub" value="phy"> Physics</label>
+      <label><input type="checkbox" name="sub" value="chem"> Chemistry</label>
+    </div>
+
+    <div class="math-problem">
+      <label id="math-problem-label"></label>
+      <input type="number" id="math-answer" required>
+      <span id="error-message" class="error"></span>
+    </div>
+
+    <button type="submit">Search</button>
+    <button type="reset">Clear</button>
+  </form>
+
+  <script>
+    let correctAnswer;
+
+    function generateMathProblem() {
+      const num1 = Math.floor(Math.random() * 10) + 1;
+      const num2 = Math.floor(Math.random() * 10) + 1;
+      correctAnswer = num1 + num2;
+      document.getElementById('math-problem-label').textContent = `Prove that you are not a robot: ${num1} + ${num2} =`;
+      document.getElementById('math-answer').value = '';
+      document.getElementById('error-message').textContent = '';
+    }
+
+    function validateMath() {
+      const userAnswer = parseInt(document.getElementById('math-answer').value, 10);
+      if (userAnswer !== correctAnswer) {
+        document.getElementById('error-message').textContent = 'Wrong!';
+        return false;
+      }
+      return true;
+    }
+
+    // Generate a new math problem when the page loads
+    window.onload = generateMathProblem;
+  </script>
+</body>
+</html>

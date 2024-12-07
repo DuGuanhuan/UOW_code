@@ -1,0 +1,32 @@
+{
+    "student": {
+        "name": "John Smith",
+        "student_id": "1231234",
+        "subjects": [
+            {
+                "subject": "MATH101",
+                "credit_point": 4,
+                "mark": 85,
+                "grade": "A"
+            },
+            {
+                "subject": "ECON111",
+                "credit_point": 5,
+                "mark": 70,
+                "grade": "B"
+            },
+            {
+                "subject": "CS100",
+                "credit_point": 5,
+                "mark": 80,
+                "grade": "A"
+            },
+            {
+                "subject": "LAW121",
+                "credit_point": 6,
+                "mark": 75,
+                "grade": "B"
+            }
+        ]
+    }
+}

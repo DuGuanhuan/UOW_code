@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Drag and Drop</title>
+    <style>
+        .animal {
+            width: 100px;
+            cursor: pointer;
+        }
+        .dropzone {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            border: 2px dashed #ccc;
+            text-align: center;
+            vertical-align: top;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Drag an animal and drop it on the corresponding text.</h2>
+    <div class="dropzone" id="dogZone">
+        dog <span id="dogCount">0</span>
+    </div>
+    <div class="dropzone" id="catZone">
+        cat <span id="catCount">0</span>
+    </div>
+    <br>
+    <img src="cat.png" class="animal" id="cat" draggable="true" ondragstart="drag(event)">
+    <img src="dog.png" class="animal" id="dog" draggable="true" ondragstart="drag(event)">
+
+    <script>
+        function drag(event) {
+            event.dataTransfer.setData("text", event.target.id);
+        }
+
+        document.getElementById("dogZone").addEventListener("dragover", allowDrop);
+        document.getElementById("catZone").addEventListener("dragover", allowDrop);
+        document.getElementById("dogZone").addEventListener("drop", dropDog);
+        document.getElementById("catZone").addEventListener("drop", dropCat);
+
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        function dropDog(event) {
+            event.preventDefault();
+            const data = event.dataTransfer.getData("text");
+            if (data === "dog") {
+                let count = parseInt(document.getElementById("dogCount").innerText);
+                document.getElementById("dogCount").innerText = count + 1;
+            }
+        }
+
+        function dropCat(event) {
+            event.preventDefault();
+            const data = event.dataTransfer.getData("text");
+            if (data === "cat") {
+                let count = parseInt(document.getElementById("catCount").innerText);
+                document.getElementById("catCount").innerText = count + 1;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read JSON</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Read JSON</h1>
+    <textarea id="jsonInput" placeholder='Paste JSON here...'></textarea><br>
+    <button onclick="readJSON()">Read JSON</button>
+
+    <h2>Subject Information</h2>
+    <label for="code">Subject code:</label>
+    <input type="text" id="code"><br><br>
+
+    <label for="title">Subject title:</label>
+    <input type="text" id="title"><br><br>
+
+    <label for="credit">Subject credit point:</label>
+    <input type="number" id="credit"><br><br>
+
+    <label for="core">Core subject:</label>
+    <input type="checkbox" id="core"><br><br>
+
+    <script>
+        function readJSON() {
+            const jsonInput = document.getElementById('jsonInput').value;
+            try {
+                const subjectObject = JSON.parse(jsonInput);
+
+                document.getElementById('code').value = subjectObject.code;
+                document.getElementById('title').value = subjectObject.title;
+                document.getElementById('credit').value = subjectObject.cp;
+                document.getElementById('core').checked = subjectObject.coreFlag;
+            } catch (error) {
+                alert("Invalid JSON format. Please check your input.");
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+    "users": [
+        {
+            "name": "GuanhuanDu",
+            "email": "duguanhuan@gmail.com",
+            "loginCount": 5
+        },
+        {
+            "name": "Another User",
+            "email": "another.user@example.com",
+            "loginCount": 3
+        }
+    ]
+}
